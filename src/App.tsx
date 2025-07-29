@@ -1,31 +1,35 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Movies from "./pages/Movies";
+import Movies from "./pages/MoviesPage";
 import Profile from "./pages/Profile";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
+import Layout from "./layouts/layout";
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route
-        path="/movies"
-        element={
-          <ProtectedRoute>
-            <Movies />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
+
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoute>
+              <Movies />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Route>
     </Routes>
   );
 }
