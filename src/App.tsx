@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./layouts/layout";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 export default function App() {
   return (
@@ -18,6 +19,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Movies />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/movies/:id"
+          element={
+            <ProtectedRoute>
+              <MovieDetailsPage />
             </ProtectedRoute>
           }
         />
