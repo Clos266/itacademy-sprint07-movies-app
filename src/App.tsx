@@ -6,6 +6,7 @@ import { ProtectedRoute } from "./routes/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./layouts/layout";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
+import ActorDetailsPage from "./pages/ActorDetailsPage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/actor/:id" element={<ActorDetailsPage />} />
         <Route
           path="/movies/:id"
           element={

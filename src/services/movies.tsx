@@ -6,3 +6,7 @@ export const getPopularMovies = async () => {
   });
   return response.data.results;
 };
+export const getMovieCredits = async (id: string | number) => {
+  const res = await tmdb.get(`/movie/${id}/credits`);
+  return res.data.cast;
+};
