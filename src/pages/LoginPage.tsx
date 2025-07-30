@@ -11,7 +11,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (user) {
-      navigate("/movies"); // redirige si ya estás logueado
+      navigate("/movies");
     }
   }, [user, navigate]);
 
@@ -22,7 +22,6 @@ export default function LoginPage() {
         appearance={{ theme: ThemeSupa }}
         providers={[]}
         redirectTo="/movies"
-        // otras props si quieres
       />
     </div>
   );

@@ -1,12 +1,20 @@
 import tmdb from "../lib/axios";
 
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (page: number = 1) => {
   const response = await tmdb.get("/movie/popular", {
-    params: { page: 1 },
+    params: { page },
   });
-  return response.data.results;
+
+  return {
+    movies: response.data.results,
+    totalPages: response.data.total_pages,
+    currentPage: response.data.page,
+  };
 };
 export const getMovieCredits = async (id: string | number) => {
   const res = await tmdb.get(`/movie/${id}/credits`);
-  return res.data.cast;
+  return {
+    cast: res.data.cast,
+    crew: res.data.crew,
+  };
 };

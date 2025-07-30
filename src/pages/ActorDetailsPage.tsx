@@ -1,28 +1,9 @@
-// src/pages/ActorDetailsPage.tsx
-
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "../lib/axios";
+import { useParams, Link } from "react-router-dom";
+import { useActorDetails } from "../hooks/useActorDetails";
 
 export default function ActorDetailsPage() {
   const { id } = useParams();
-  const [actor, setActor] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchActorDetails = async () => {
-      try {
-        const res = await axios.get(`/person/${id}?language=es-ES`);
-        setActor(res.data);
-      } catch (err) {
-        console.error("Error al obtener los detalles del actor:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchActorDetails();
-  }, [id]);
+  const { actor, movies, loading } = useActorDetails(id);
 
   if (loading) return <p>Cargando...</p>;
   if (!actor) return <p>No se encontró el actor</p>;
@@ -55,6 +36,42 @@ export default function ActorDetailsPage() {
       <p>
         <strong>Popularidad:</strong> {actor.popularity}
       </p>
+
+      <h2 style={{ marginTop: "2rem" }}>Películas destacadas</h2>
+      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        {movies.map((movie) => (
+          <Link
+            to={`/movies/${movie.id}`}
+            key={movie.id}
+            style={{
+              width: "140px",
+              textAlign: "center",
+              textDecoration: "none",
+              color: "inherit",
+            }}
+          >
+            {movie.poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                alt={movie.title}
+                style={{ width: "100%", borderRadius: "8px" }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  height: "210px",
+                  backgroundColor: "#ccc",
+                  borderRadius: "8px",
+                }}
+              />
+            )}
+            <p style={{ margin: "0.5rem 0 0", fontSize: "0.9rem" }}>
+              {movie.title}
+            </p>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

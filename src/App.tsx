@@ -23,7 +23,14 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/actor/:id" element={<ActorDetailsPage />} />
+        <Route
+          path="/actor/:id"
+          element={
+            <ProtectedRoute>
+              <ActorDetailsPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/movies/:id"
           element={

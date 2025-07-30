@@ -1,59 +1,80 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "../lib/axios";
-import { getMovieCredits } from "../services/movies";
 import { Link } from "react-router-dom";
+import { useMovieDetails } from "../hooks/useMovieDetails";
+import { useCast } from "../hooks/useCast";
 
 export default function MovieDetailsPage() {
-  const { id } = useParams();
-  const [movie, setMovie] = useState<any>(null);
-  const [cast, setCast] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { id } = useParams<{ id: string }>();
+  const {
+    movie,
+    directors,
+    writers,
+    loading: loadingDetails,
+  } = useMovieDetails(id);
+  const { cast, loading: loadingCast } = useCast(id);
 
-  useEffect(() => {
-    const fetchMovieDetails = async () => {
-      try {
-        const res = await axios.get(`/movie/${id}?language=en-EN`);
-        setMovie(res.data);
-
-        const credits = await getMovieCredits(id!);
-        setCast(credits.slice(0, 5));
-      } catch (err) {
-        console.error("Error al obtener los detalles:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMovieDetails();
-  }, [id]);
-
-  if (loading) return <p>Cargando...</p>;
+  if (loadingDetails || loadingCast) return <p>Cargando...</p>;
   if (!movie) return <p>No se encontró la película</p>;
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h1>{movie.title}</h1>
-      <p>{movie.release_date}</p>
-      {movie.genres?.length > 0 && (
-        <p>{movie.genres.map((g: any) => g.name).join(", ")}</p>
-      )}
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-        style={{ width: "300px" }}
-      />
-      <p>
-        <strong>Resumen:</strong> {movie.overview}
-      </p>
-      <p>
-        <strong>Fecha de lanzamiento:</strong> {movie.release_date}
-      </p>
-      <p>
-        <strong>Popularidad:</strong> {movie.popularity}
-      </p>
+    <div
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        padding: "2rem",
+        color: "white",
+        minHeight: "100vh",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          borderRadius: "12px",
+          padding: "2rem",
+          maxWidth: "900px",
+          margin: "0 auto",
+        }}
+      >
+        <div style={{ padding: "1rem" }}>
+          <h1>{movie.title}</h1>
+          <p>{movie.release_date}</p>
+          {movie.genres?.length > 0 && (
+            <p>{movie.genres.map((g: any) => g.name).join(", ")}</p>
+          )}
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+            style={{ width: "300px" }}
+          />
+          <p>
+            <strong>Resumen:</strong> {movie.overview}
+          </p>
+          <p>
+            <strong>Fecha de lanzamiento:</strong> {movie.release_date}
+          </p>
+          <p>
+            <strong>Popularidad:</strong> {movie.popularity}
+          </p>
 
-      <h2 style={{ marginTop: "1rem" }}>Actores principales</h2>
+          <h2 style={{ marginTop: "1rem" }}>Actores principales</h2>
+          <p>
+            <strong>Rating:</strong> {movie.vote_average} / 10 (
+            {movie.vote_count} votos)
+          </p>
+        </div>
+      </div>
+      {directors.length > 0 && (
+        <p>
+          <strong>Director:</strong> {directors.join(", ")}
+        </p>
+      )}
+      {writers.length > 0 && (
+        <p>
+          <strong>Guionistas:</strong> {writers.join(", ")}
+        </p>
+      )}
+
       <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
         {cast.map((actor) => (
           <Link
