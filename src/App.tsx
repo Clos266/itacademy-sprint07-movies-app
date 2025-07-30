@@ -4,7 +4,7 @@ import Movies from "./pages/MoviesPage";
 import Profile from "./pages/Profile";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
-import Layout from "./layouts/layout";
+import Layout from "./components/layouts/layout";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
 import ActorDetailsPage from "./pages/ActorDetailsPage";
 
