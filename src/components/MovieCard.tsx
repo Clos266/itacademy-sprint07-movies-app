@@ -4,29 +4,40 @@ interface MovieCardProps {
   id: number;
   title: string;
   posterPath: string | null;
+  voteAverage?: number;
+  releaseDate?: string;
 }
 
-export default function MovieCard({ id, title, posterPath }: MovieCardProps) {
+export default function MovieCard({
+  id,
+  title,
+  posterPath,
+  voteAverage,
+  releaseDate,
+}: MovieCardProps) {
+  const releaseYear = releaseDate ? new Date(releaseDate).getFullYear() : "N/A";
+
   return (
-    <li style={{ width: "200px" }}>
+    <li className="w-[200px] hover:scale-105 transition-transform duration-300">
       <Link to={`/movies/${id}`}>
         {posterPath ? (
           <img
             src={`https://image.tmdb.org/t/p/w500${posterPath}`}
             alt={title}
-            style={{ width: "100%", borderRadius: "8px" }}
+            className="w-full h-auto rounded-lg shadow-md"
           />
         ) : (
-          <div
-            style={{
-              width: "100%",
-              height: "300px",
-              backgroundColor: "#ccc",
-              borderRadius: "8px",
-            }}
-          />
+          <div className="w-full h-[300px] bg-gray-300 rounded-lg flex items-center justify-center text-gray-600 text-sm">
+            No Image
+          </div>
         )}
-        <p>{title}</p>
+
+        <div className="mt-2 text-black text-center">
+          <p className="font-semibold truncate">{title}</p>
+          <p className="text-sm text-gray-700">
+            {releaseYear} · ⭐ {voteAverage?.toFixed(1) ?? "N/A"}
+          </p>
+        </div>
       </Link>
     </li>
   );
