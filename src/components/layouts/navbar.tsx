@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <nav className="flex justify-between text-sm font-medium text-white px-6 py-4 bg-primary">
-      <ul className="flex gap-6">
+      <ul className="flex gap-4">
         <li>
           <Link to="/" className="hover:text-secondary transition">
             Home

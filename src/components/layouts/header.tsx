@@ -12,9 +12,10 @@ export default function Header() {
           className="h-6 max-w-full w-auto"
           style={{ maxHeight: "40px" }}
         />
+      </div>
+      <div className="flex-grow">
         <Navbar />
       </div>
-
       <LoginButton />
     </header>
   );
