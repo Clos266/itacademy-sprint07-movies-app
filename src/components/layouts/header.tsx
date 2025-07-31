@@ -1,15 +1,21 @@
 import logo from "../../assets/logo-tmdb-header.svg";
 import Navbar from "./navbar";
+import LoginButton from "./loginButton";
 
 export default function Header() {
   return (
-    <header className="bg-primary text-white px-6 py-4 shadow-md">
-      <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Logo" className="h-10" />
-        </div>
+    <header className="bg-primary text-white px-6 py-4 flex items-center justify-between shadow-md flex-wrap">
+      <div className="flex items-center gap-4 flex-shrink-0">
+        <img
+          src={logo}
+          alt="Logo"
+          className="h-6 max-w-full w-auto"
+          style={{ maxHeight: "40px" }}
+        />
         <Navbar />
       </div>
+
+      <LoginButton />
     </header>
   );
 }
