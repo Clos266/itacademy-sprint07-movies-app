@@ -15,12 +15,12 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/people" className="hover:text-secondary transition">
+          <Link to="/movies" className="hover:text-secondary transition">
             People
           </Link>
         </li>
         <li>
-          <Link to="/profile" className="hover:text-secondary transition">
+          <Link to="/movies" className="hover:text-secondary transition">
             More
           </Link>
         </li>
