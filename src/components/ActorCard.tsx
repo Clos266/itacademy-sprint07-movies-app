@@ -12,30 +12,19 @@ export default function ActorMovieCard({ movie }: Props) {
   return (
     <Link
       to={`/movies/${movie.id}`}
-      style={{
-        width: "140px",
-        textAlign: "center",
-        textDecoration: "none",
-        color: "inherit",
-      }}
+      className="w-36 text-center no-underline text-gray-900 hover:text-secondary transition-colors"
     >
       {movie.poster_path ? (
         <img
           src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
           alt={movie.title}
-          style={{ width: "100%", borderRadius: "8px" }}
+          className="w-full rounded-lg shadow-md"
+          loading="lazy"
         />
       ) : (
-        <div
-          style={{
-            width: "100%",
-            height: "210px",
-            backgroundColor: "#ccc",
-            borderRadius: "8px",
-          }}
-        />
+        <div className="w-full h-[210px] bg-gray-300 rounded-lg" />
       )}
-      <p style={{ margin: "0.5rem 0 0", fontSize: "0.9rem" }}>{movie.title}</p>
+      <p className="mt-2 text-sm font-medium truncate">{movie.title}</p>
     </Link>
   );
 }

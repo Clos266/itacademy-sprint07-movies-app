@@ -6,43 +6,70 @@ export default function ActorDetailsPage() {
   const { id } = useParams();
   const { actor, movies, loading } = useActorDetails(id);
 
-  if (loading) return <p>Cargando...</p>;
-  if (!actor) return <p>No se encontró el actor</p>;
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen text-lg text-gray-500">
+        Loading...
+      </div>
+    );
+  if (!actor)
+    return (
+      <div className="flex justify-center items-center h-screen text-lg text-red-500">
+        Actor not found.
+      </div>
+    );
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h1>{actor.name}</h1>
-      {actor.profile_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
-          alt={actor.name}
-          style={{ width: "300px", borderRadius: "8px" }}
-        />
-      )}
-      <p>
-        <strong>Biografía:</strong>
-      </p>
-      <p>{actor.biography || "Biografía no disponible."}</p>
-      <p>
-        <strong>Fecha de nacimiento:</strong> {actor.birthday}
-      </p>
-      {actor.deathday && (
-        <p>
-          <strong>Fallecimiento:</strong> {actor.deathday}
-        </p>
-      )}
-      <p>
-        <strong>Lugar de nacimiento:</strong> {actor.place_of_birth}
-      </p>
-      <p>
-        <strong>Popularidad:</strong> {actor.popularity}
-      </p>
+    <div className="max-w-5xl mx-auto p-6">
+      <h1 className="text-4xl font-bold mb-6">{actor.name}</h1>
 
-      <h2 style={{ marginTop: "2rem" }}>Películas destacadas</h2>
-      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-        {movies.map((movie) => (
-          <ActorMovieCard key={movie.id} movie={movie} />
-        ))}
+      <div className="flex flex-col md:flex-row gap-8">
+        {actor.profile_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
+            alt={actor.name}
+            className="rounded-lg shadow-lg w-full max-w-xs mx-auto md:mx-0"
+          />
+        ) : (
+          <div className="w-full max-w-xs h-72 bg-gray-300 rounded-lg mx-auto md:mx-0" />
+        )}
+
+        <div className="flex-1 text-gray-800">
+          <h2 className="text-2xl font-semibold mb-2">Biography</h2>
+          <p className="mb-4 whitespace-pre-line">
+            {actor.biography || "Biography not available."}
+          </p>
+
+          <ul className="space-y-2 text-sm text-gray-600">
+            <li>
+              <strong>Born:</strong> {actor.birthday || "Unknown"}
+            </li>
+            {actor.deathday && (
+              <li>
+                <strong>Died:</strong> {actor.deathday}
+              </li>
+            )}
+            <li>
+              <strong>Place of Birth:</strong>{" "}
+              {actor.place_of_birth || "Unknown"}
+            </li>
+            <li>
+              <strong>Popularity:</strong>{" "}
+              {actor.popularity !== undefined && actor.popularity !== null
+                ? actor.popularity.toFixed(1)
+                : "Unknown"}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 className="text-3xl font-semibold mt-12 mb-6">Featured Movies</h2>
+      <div className="flex flex-wrap gap-6 justify-center">
+        {movies.length > 0 ? (
+          movies.map((movie) => <ActorMovieCard key={movie.id} movie={movie} />)
+        ) : (
+          <p className="text-gray-500">No movies available.</p>
+        )}
       </div>
     </div>
   );
