@@ -34,7 +34,6 @@ export default function MovieDetailsPage() {
         backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
       }}
     >
-      {/* Overlay semi-transparent secondary color */}
       <div className="absolute inset-0 bg-secondary bg-opacity-50"></div>
 
       <div className="relative max-w-5xl mx-auto p-8 rounded-lg text-white">

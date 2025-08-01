@@ -45,7 +45,6 @@ export default function HomePage() {
             {" "}
             <h1 className="text-4xl font-bold mb-8 text-center">
               Welcome. Millions of movies, TV shows and people to discover.
-              Explore now.
             </h1>
           </div>
         </div>

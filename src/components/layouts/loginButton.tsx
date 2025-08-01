@@ -14,7 +14,7 @@ export default function LoginButton() {
     checkUser();
 
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      (_sessionEvent, session) => {
         setIsLoggedIn(!!session?.user);
       }
     );
@@ -55,12 +55,12 @@ export default function LoginButton() {
         ) : (
           <>
             <li>
-              <Link to="/LoginPage" className="hover:text-secondary transition">
+              <Link to="/Login" className="hover:text-secondary transition">
                 Login
               </Link>
             </li>
             <li>
-              <Link to="/LoginPage" className="hover:text-secondary transition">
+              <Link to="/Login" className="hover:text-secondary transition">
                 Join TMDB
               </Link>
             </li>
