@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="bg-primary text-white py-10 px-6 mt-16 text-sm">
-      <div className="max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 items-start">
-        <div className="flex flex-col">
+      <div className="max-w-screen-xl mx-auto flex justify-center items-start space-x-6">
+        <div className="inline-block" style={{ maxWidth: "180px" }}>
           <img
             src={logofooter}
             alt="TMDb Logo"
-            className="w-full max-w-[180px] self-start"
+            className="w-full object-contain"
           />
         </div>
 
-        <div>
+        <div className="inline-block ">
           <h3 className="font-semibold mb-2">The Basics</h3>
-          <ul className="space-y-1 text-gray-300">
+          <ul className="text-gray-300">
             <li>
               <Link to="#">About TMDB</Link>
             </li>
@@ -34,9 +34,9 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="inline-block ">
           <h3 className="font-semibold mb-2">Get Involved</h3>
-          <ul className="space-y-1 text-gray-300">
+          <ul className="text-gray-300">
             <li>
               <Link to="#">Contribution Bible</Link>
             </li>
@@ -49,9 +49,9 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="inline-block ">
           <h3 className="font-semibold mb-2">Community</h3>
-          <ul className="space-y-1 text-gray-300">
+          <ul className="text-gray-300">
             <li>
               <Link to="#">Guidelines</Link>
             </li>
@@ -64,9 +64,9 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="inline-block ">
           <h3 className="font-semibold mb-2">Legal</h3>
-          <ul className="space-y-1 text-gray-300">
+          <ul className="text-gray-300">
             <li>
               <Link to="#">Terms of Use</Link>
             </li>
