@@ -8,7 +8,7 @@ describe("usePopularMovies", () => {
     vi.restoreAllMocks();
   });
 
-  it("debe cargar películas populares correctamente", async () => {
+  it("should load popular movies correctly", async () => {
     const fakeData = {
       movies: [
         { id: 1, title: "Movie 1" },
@@ -31,8 +31,8 @@ describe("usePopularMovies", () => {
     expect(result.current.totalPages).toBe(10);
   });
 
-  it("debe manejar error al cargar películas", async () => {
-    const fakeError = new Error("Fallo en fetch");
+  it("should handle error when loading movies", async () => {
+    const fakeError = new Error("Fetch failed");
 
     vi.spyOn(moviesService, "getPopularMovies").mockRejectedValue(fakeError);
 

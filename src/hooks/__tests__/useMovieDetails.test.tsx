@@ -12,13 +12,13 @@ describe("useMovieDetails", () => {
     vi.clearAllMocks();
   });
 
-  it("debe cargar detalles de película, directores y escritores", async () => {
+  it("should load movie details, directors, and writers", async () => {
     const fakeMovie = { id: 1, title: "Fake Movie" };
     const fakeCrew = [
-      { job: "Director", name: "Director Uno" },
-      { job: "Writer", name: "Writer Uno" },
-      { job: "Screenplay", name: "Writer Dos" },
-      { job: "Producer", name: "Producer Uno" },
+      { job: "Director", name: "Director One" },
+      { job: "Writer", name: "Writer One" },
+      { job: "Screenplay", name: "Writer Two" },
+      { job: "Producer", name: "Producer One" },
     ];
 
     mockAxios.get.mockImplementation((url) => {
@@ -28,7 +28,7 @@ describe("useMovieDetails", () => {
       if (url.includes("/movie/")) {
         return Promise.resolve({ data: fakeMovie });
       }
-      return Promise.reject(new Error("URL desconocida"));
+      return Promise.reject(new Error("Unknown URL"));
     });
 
     const { result } = renderHook(() => useMovieDetails("123"));
@@ -38,11 +38,11 @@ describe("useMovieDetails", () => {
     });
 
     expect(result.current.movie).toEqual(fakeMovie);
-    expect(result.current.directors).toEqual(["Director Uno"]);
-    expect(result.current.writers).toEqual(["Writer Uno", "Writer Dos"]);
+    expect(result.current.directors).toEqual(["Director One"]);
+    expect(result.current.writers).toEqual(["Writer One", "Writer Two"]);
   });
 
-  it("no hace fetch si no hay id", () => {
+  it("should not fetch if no id is provided", () => {
     const { result } = renderHook(() => useMovieDetails(undefined));
 
     expect(result.current.loading).toBe(true);

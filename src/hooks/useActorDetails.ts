@@ -35,7 +35,7 @@ export function useActorDetails(id?: string) {
         setActor(actorRes.data);
         setMovies(creditsRes.data.cast.slice(0, 8));
       } catch (err) {
-        console.error("Error al obtener los detalles del actor:", err);
+        console.error("Error fetching actor details:", err);
       } finally {
         setLoading(false);
       }

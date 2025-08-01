@@ -11,9 +11,9 @@ export function useCast(id?: string) {
     const fetchCast = async () => {
       try {
         const credits = await getMovieCredits(id);
-        setCast(credits.cast.slice(0, 7));
+        setCast(credits.cast.slice(0, 9));
       } catch (err) {
-        console.error("Error al obtener el cast:", err);
+        console.error("Error fetching cast details:", err);
       } finally {
         setLoading(false);
       }

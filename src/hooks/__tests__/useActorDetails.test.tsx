@@ -3,7 +3,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import axios from "../../lib/axios";
 import { useActorDetails } from "../useActorDetails";
 
-// Mock de axios
 vi.mock("../../lib/axios");
 
 describe("useActorDetails", () => {
@@ -13,17 +12,17 @@ describe("useActorDetails", () => {
     vi.clearAllMocks();
   });
 
-  it("debe cargar actor y películas correctamente", async () => {
+  it("loads actor and movies correctly", async () => {
     const fakeActor = {
-      name: "Actor Falso",
-      biography: "Biografía de prueba",
+      name: "Fake Actor",
+      biography: "Test biography",
       birthday: "1980-01-01",
     };
     const fakeMovies = Array(10)
       .fill(null)
       .map((_, i) => ({
         id: i,
-        title: `Película ${i}`,
+        title: `Movie ${i}`,
         poster_path: `/poster${i}.jpg`,
       }));
 
@@ -34,7 +33,7 @@ describe("useActorDetails", () => {
       if (url.includes("/person/")) {
         return Promise.resolve({ data: fakeActor });
       }
-      return Promise.reject(new Error("URL desconocida"));
+      return Promise.reject(new Error("Unknown URL"));
     });
 
     const { result } = renderHook(() => useActorDetails("123"));
@@ -44,11 +43,11 @@ describe("useActorDetails", () => {
     });
 
     expect(result.current.actor).toEqual(fakeActor);
-    expect(result.current.movies.length).toBe(8); // El hook limita a 8
-    expect(result.current.movies[0].title).toBe("Película 0");
+    expect(result.current.movies.length).toBe(8);
+    expect(result.current.movies[0].title).toBe("Movie 0");
   });
 
-  it("no hace fetch si no hay id", () => {
+  it("does not fetch if no id", () => {
     const { result } = renderHook(() => useActorDetails(undefined));
 
     expect(result.current.loading).toBe(true);
