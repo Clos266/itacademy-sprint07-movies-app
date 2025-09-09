@@ -1,5 +1,7 @@
 # 🎬 MoviesApp
 
+[MoviesApp Demo](./src/videos/Scene-1.mp4)
+
 A modern web application built with **React** and **Vite** that allows users to explore movies using **The Movie Database (TMDb) API** with **Supabase authentication**.
 
 ---
