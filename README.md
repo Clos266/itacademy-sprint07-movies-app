@@ -4,7 +4,7 @@
 
 A modern web application built with **React** and **Vite** that allows users to explore movies using **The Movie Database (TMDb) API** with **Supabase authentication**.
 
----
+## You need to register to be able to navigate, if you don't want to register you can also use this: email: carlos@test.com pw: carlos1234
 
 ## ✨ Features
 
