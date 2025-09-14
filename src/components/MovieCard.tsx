@@ -18,7 +18,7 @@ export default function MovieCard({
   const releaseYear = releaseDate ? new Date(releaseDate).getFullYear() : "N/A";
 
   return (
-    <li className="w-[200px] hover:scale-105 transition-transform duration-300">
+    <li className="w-[200px] transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
       <Link to={`/movies/${id}`}>
         {posterPath ? (
           <img
