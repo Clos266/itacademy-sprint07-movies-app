@@ -53,13 +53,13 @@ export default function Footer() {
           <h3 className="font-semibold mb-2">Community</h3>
           <ul className="text-gray-300">
             <li>
-              <Link to="#">Guidelines</Link>
+              <Link to="/profile">Guidelines</Link>
             </li>
             <li>
-              <Link to="#">Discussions</Link>
+              <Link to="/profile">Discussions</Link>
             </li>
             <li>
-              <Link to="#">Leaderboard</Link>
+              <Link to="/profile">Leaderboard</Link>
             </li>
           </ul>
         </div>
