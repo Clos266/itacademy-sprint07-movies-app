@@ -1,4 +1,4 @@
-import logo from "../../..public/images/tmdb-logo.svg";
+import logo from "../../../public/logo-tmdb-header.svg";
 import Navbar from "./navbar";
 import LoginButton from "./loginButton";
 

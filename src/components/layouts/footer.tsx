@@ -1,4 +1,4 @@
-import logofooter from "../../../public/images/tmdb-logo.svg";
+import logofooter from "../../../public/logo-tmdb-full.svg";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
