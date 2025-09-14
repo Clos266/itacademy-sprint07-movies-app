@@ -36,7 +36,7 @@ export default function ActorDetailsPage() {
 
         <div className="flex-1 text-gray-800">
           <h2 className="text-2xl font-semibold mb-2">Biography</h2>
-          <p className="mb-4 whitespace-pre-line">
+          <p className="max-h-80 overflow-y-auto p-2 rounded bg-gray-50 text-gray-800">
             {actor.biography || "Biography not available."}
           </p>
 
