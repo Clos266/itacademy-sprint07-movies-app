@@ -38,13 +38,13 @@ export default function Footer() {
           <h3 className="font-semibold mb-2">Get Involved</h3>
           <ul className="text-gray-300">
             <li>
-              <Link to="#">Contribution Bible</Link>
+              <Link to="/profile">Contribution Bible</Link>
             </li>
             <li>
-              <Link to="#">Add New Movie</Link>
+              <Link to="/profile">Add New Movie</Link>
             </li>
             <li>
-              <Link to="#">Add New TV Show</Link>
+              <Link to="/profile">Add New TV Show</Link>
             </li>
           </ul>
         </div>
