@@ -18,7 +18,7 @@ export default function ActorMovieCard({ movie }: Props) {
         <img
           src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
           alt={movie.title}
-          className="w-full rounded-lg shadow-md"
+          className="w-full md:w-72 rounded-lg shadow-md object-cover"
           loading="lazy"
         />
       ) : (
