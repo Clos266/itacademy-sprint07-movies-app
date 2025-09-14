@@ -17,19 +17,19 @@ export default function Footer() {
           <h3 className="font-semibold mb-2">The Basics</h3>
           <ul className="text-gray-300">
             <li>
-              <Link to="#">About TMDB</Link>
+              <Link to="/profile">About TMDB</Link>
             </li>
             <li>
-              <Link to="#">Contact Us</Link>
+              <Link to="/profile">Contact Us</Link>
             </li>
             <li>
-              <Link to="#">Support Forums</Link>
+              <Link to="/profile">Support Forums</Link>
             </li>
             <li>
-              <Link to="#">API Documentation</Link>
+              <Link to="/profile">API Documentation</Link>
             </li>
             <li>
-              <Link to="#">System Status</Link>
+              <Link to="/profile">System Status</Link>
             </li>
           </ul>
         </div>
