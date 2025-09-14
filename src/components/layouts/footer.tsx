@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-primary text-white py-10 px-6 mt-16 text-sm">
       <div className="max-w-screen-xl mx-auto flex justify-center items-start space-x-6">
-        <div className="inline-block" style={{ maxWidth: "180px" }}>
+        <div className="inline-block max-w-[180px]">
           <img
             src={logofooter}
             alt="TMDb Logo"
