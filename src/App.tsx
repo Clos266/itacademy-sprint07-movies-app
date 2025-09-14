@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Movies from "./pages/MoviesPage";
-import Profile from "./pages/Profile";
+import Profile from "./pages/UnderConstruction";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import Layout from "./components/layouts/layout";
