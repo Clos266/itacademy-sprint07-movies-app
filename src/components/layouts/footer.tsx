@@ -68,16 +68,16 @@ export default function Footer() {
           <h3 className="font-semibold mb-2">Legal</h3>
           <ul className="text-gray-300">
             <li>
-              <Link to="#">Terms of Use</Link>
+              <Link to="/profile">Terms of Use</Link>
             </li>
             <li>
-              <Link to="#">API Terms of Use</Link>
+              <Link to="/profile">API Terms of Use</Link>
             </li>
             <li>
-              <Link to="#">Privacy Policy</Link>
+              <Link to="/profile">Privacy Policy</Link>
             </li>
             <li>
-              <Link to="#">DMCA Policy</Link>
+              <Link to="/profile">DMCA Policy</Link>
             </li>
           </ul>
         </div>
