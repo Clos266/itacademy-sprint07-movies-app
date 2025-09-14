@@ -20,7 +20,7 @@ export default function LoginPage() {
   return (
     <>
       <Header />
-      <div style={{ maxWidth: 400, margin: "auto", paddingTop: 50 }}>
+      <div className="max-w-md mx-auto pt-12">
         <Auth
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
