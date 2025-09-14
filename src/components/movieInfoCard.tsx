@@ -32,11 +32,6 @@ export default function MovieInfoCard({ movie, directors, writers }: Props) {
           </p>
 
           <p>
-            <strong>Release Date:</strong>{" "}
-            {new Date(movie.release_date).toLocaleDateString()}
-          </p>
-
-          <p>
             <strong>Popularity:</strong> {movie.popularity.toFixed(1)}
           </p>
 
